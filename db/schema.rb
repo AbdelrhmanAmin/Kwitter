@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 2021_01_24_212017) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "fullname"
-    t.string "photo"
-    t.string "cover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
