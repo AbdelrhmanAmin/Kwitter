@@ -24,7 +24,8 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 
 body,
 html {
-  height: 100vh;
+  height: 100%;
+  background-color: #f0f0f0;
 }
 .grid-left {
   background-color: rgb(33, 51, 70);
@@ -38,6 +39,9 @@ html {
 }
 .ml-3 {
   margin-left: 0.5rem !important;
+}
+.mr-3 {
+  margin-right: 0.5rem !important;
 }
 .mr-5 {
   margin-right: 1.5rem !important;
@@ -54,7 +58,7 @@ html {
   text-decoration: none;
 }
 .who {
-  color: #cdced0;
+  color: #969696;
 }
 h1,
 h2,
@@ -85,7 +89,5 @@ h6 {
 }
 a {
   transition: all 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
-}
-a:hover {
-  color: white;
+  text-decoration: none;
 }
