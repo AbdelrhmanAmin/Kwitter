@@ -1,4 +1,4 @@
-<p id=”alert”><%= alert %></p>
+<p id="notice"><%= notice %></p>
 <h1>Login</h1>
 <%= form_tag sessions_path do |form| %>
   <div class=”field”>
@@ -6,6 +6,6 @@
     <%= text_field_tag :username %>
   </div>
   <div class=”actions”>
-    <%= submit_tag “Login” %>
+    <%= submit_tag "Login" %>
   </div>
 <% end %>
