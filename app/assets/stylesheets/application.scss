@@ -15,6 +15,13 @@
  */
 @import "bootstrap";
 @import "font-awesome";
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/v4-shims";
+
 body,
 html {
   height: 100vh;
@@ -31,6 +38,9 @@ html {
 }
 .ml-3 {
   margin-left: 0.5rem !important;
+}
+.mr-5 {
+  margin-right: 1.5rem !important;
 }
 .bg-select {
   background-color: #4a98d2;
@@ -56,4 +66,17 @@ h6 {
 }
 .border-left-0 {
   border-left: 0 !important;
+}
+.header-links {
+  color: #36709c;
+  text-decoration: none;
+}
+.header-bg {
+  background-color: #51a5e6;
+}
+a {
+  transition: all 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+a:hover {
+  color: white;
 }

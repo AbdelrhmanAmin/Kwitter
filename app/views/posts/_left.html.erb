@@ -28,9 +28,5 @@
       <i class="fa fa-user "></i>
       <%= link_to 'Profile', user_path(current_user), class: 'w-100 h6 links-color ml-3' %>
     </div>
-    <%= link_to 'logout', logout_path %>
-  <%else%>
-    <%= link_to 'Login', login_path %> <br>
-    <%= link_to 'signup', signup_path %>
   <%end%>
 </div>
