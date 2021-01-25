@@ -1,0 +1,20 @@
+<div class='px-4'>
+  <div class="d-flex border border-right-0 border-left-0 border-top-0 py-4">
+    <h6 class='h6 who'>WHO TO FOLLOW</h6>
+  </div>
+</div>
+<div class="d-flex flex-column px-4 border border-right-0 border-left-0 border-top-0">
+  <div class="d-flex py-3">
+    <%= image_tag current_user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%" %>
+    <%= link_to current_user.username, user_path(current_user), class: "h6 m-3 links-color" %>
+  </div>
+  <div class="d-flex py-3">
+    <%= image_tag current_user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%" %>
+    <%= link_to current_user.username, user_path(current_user), class: "h6 m-3 links-color" %>
+  </div>
+  <div class="d-flex py-3">
+    <%= image_tag current_user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%" %>
+    <%= link_to current_user.username, user_path(current_user), class: "h6 m-3 links-color" %>
+  </div>
+  
+</div>
