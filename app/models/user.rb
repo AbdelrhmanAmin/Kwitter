@@ -25,14 +25,26 @@ class User < ApplicationRecord
   def following?(other)
     following.include?(other)
   end
+  def thumbnail(user)
+    return user.cover.variant(resize: "850x250!").processed
+  end
+  def profile_picture(user)
+    return user.image.variant(resize: "50x50!").processed
+  end
+  
   private
-
   def image_type
     if image.attached? == false
       errors.add(:image, "is missing!")
     end
     if cover.attached? == false
       errors.add(:cover, "is missing!")
+    end
+    if image.attached? && !image.content_type.in?(%w(image/jpeg image/png image/gif))
+      errors.add(:image, "Must be JPEG OR PNG OR GIF!")
+    end
+    if cover.attached? && !cover.content_type.in?(%w(image/jpeg image/png image/gif))
+      errors.add(:cover, "Must be JPEG OR PNG OR GIF!")
     end
   end
 end

@@ -91,3 +91,14 @@ a {
   transition: all 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
   text-decoration: none;
 }
+.social li a i {
+  margin-right: 5px;
+  font-size: 25px;
+  -webkit-transition: 0.5s all ease;
+  -moz-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+.social li:hover a i {
+  font-size: 30px;
+  margin-top: -10px;
+}

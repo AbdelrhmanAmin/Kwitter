@@ -1,4 +1,5 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= link_to "Homepage", root_path %>
+<%= form_with(model: user, local: true, html:{class: 'form-horizontal'} ) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,24 +12,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+  <div class="form-group">
+    <%= form.label :username, class: 'control-label col-2' %>
+    <div class="col-10">
+      <%= form.text_field :username %>
+    </div>
   </div>
   
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  <div class="form-group">
+    <%= form.label :image, class: 'control-label col-2' %>
+    <div class="col-10">
+      <%= form.file_field :image %>
+    </div>
   </div>
   <div class="field">
-    <%= form.label :cover %>
-    <%= form.file_field :cover %>
+    <%= form.label :cover, class: 'control-label col-2' %>
+    <div class="col-10">
+      <%= form.file_field :cover %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :fullname %>
-    <%= form.text_field :fullname %>
+
+  <div class="form-group">
+    <%= form.label :fullname, class: 'control-label col-2' %>
+    <div class="col-10">
+      <%= form.text_field :fullname %>
+    </div>
   </div>
+  
 
   <div class="actions">
     <%= form.submit %>
