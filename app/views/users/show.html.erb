@@ -1,15 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-  <%= image_tag(@user.image)%>
-  <%= image_tag(@user.cover)%>
-<p>
-  <strong>Fullname:</strong>
-  <%= @user.fullname %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-2 grid-left p-0">
+      <%= render 'left' %>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <div class="col-12 p-0">
+          <%= render 'header' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9  border border-left-0 border-bottom-0 p-0">
+          <%= render 'middle' %>
+        </div>
+        <div class="col-3 p-0">
+          <%= render 'right' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

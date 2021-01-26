@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <div class=" bg-white p-3 m-5">
+    <h4>TWEET</h4>
+    <%= form_for @post, html: { class: 'form-inline' } do |form| %>
+        <%= form.text_field :content, class: 'form-control', placeholder: 'compose a tweet' %>
+        <%= form.submit "TWEET", class: 'btn btn-info text-white'%>
+    <%end%>
+  </div>
+<%end%>
+
+<div class=" bg-white p-3 m-5">
+  <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
+    <a class='h6'> <%= @user.posts.count%> TWEETS</a>
+  </div>
+  <% if @user.posts.length > 0%>
+    <% @user.posts.order(created_at: :desc).each do |post| %>
+        <div class="d-flex py-3 justify-content-between">
+          <div class='d-flex'>
+            <%= image_tag @user.image, style: "width: 50px; height: 50px; display:block;"%>
+            <div class="d-flex flex-column  ml-3">
+              <%= link_to @user.username, user_path(@user), class: "h6 links-color" %>
+              <span class='text-secondary'><%=post.content%> </span>
+            </div>
+          </div>
+          <% if current_user == @user%>
+            <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger'%>
+          <% end %>
+        </div>
+  <% end %>
+  <%else user_signed_in? && @posts.length < 1 %>
+    <h5 class='p-3'>It's little bit quite here.</h5>
+  <%end%>
+</div>

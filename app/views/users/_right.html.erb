@@ -1,0 +1,43 @@
+
+<div class="d-flex border border-right-0 border-left-0 border-top-0 py-4 flex-column align-items-center">
+  <%= image_tag @user.image, style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
+  <h6 class='h6 mt-2'><%= @user.username%></h6>
+  <small class='text-secondary'>@<%= @user.fullname%></small>
+    <%= form_for @following do |form| %>
+      <%= form.hidden_field :followed_id, value: @user.id %>
+      <%= form.hidden_field :follower_id, value: current_user.id %>
+      <%= form.submit 'Follow', class: 'btn btn-info text-white' %>
+    <%end%>
+</div>
+<div class="d-flex  followers px-1">
+  <div class='d-flex flex-column align-items-center border py-2 px-3  border-left-0'>
+    <span class='followers-num'>0</span>
+    <span>
+      Tweets
+    </span>
+  </div>
+   <div class='d-flex flex-column align-items-center border py-2 px-3 border-left-0'>
+    <span class='followers-num'>0</span>
+    <span>
+      Following
+    </span>
+  </div>
+  
+  <div class='d-flex flex-column align-items-center border border-right-0 py-2 px-3  '>
+    <span class='followers-num'> 0</span>
+    <span>
+      Followers
+    </span>
+  </div>
+</div>
+<div class='px-3'>
+ <h6 class='border border-top-0 border-right-0 border-left-0 py-4 who'>Followed by</h6>
+<% @users.each do |user| %>
+  <div class="d-flex flex-column px-4">
+    <div class="d-flex py-3">
+      <%= image_tag user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%" %>
+      <%= link_to user.username, user_path(user), class: "h6 m-3 links-color" %>
+    </div>
+  </div>
+<%end%>
+</div>

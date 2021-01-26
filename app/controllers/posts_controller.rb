@@ -8,10 +8,14 @@ class PostsController < ApplicationController
   end
   def create
     @post = current_user.posts.build(post_params)
-
       if @post.save
-        redirect_to root_path
-      end
+         redirect_back fallback_location: root_path
+        end
+  end
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_back fallback_location: root_path
   end
   def post_params
     params.require(:post).permit(:content)
