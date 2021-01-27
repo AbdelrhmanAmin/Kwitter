@@ -9,20 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% if @coming_events.length > 0 %>
-        <% @coming_events.each do |event| %>
-      <tr>
-          <td><%= event.title %></td>
-          <td><%= event.creator.username %></td>
-          <td><%= event.date %></td>
-          <td><%= link_to 'Show', event, class: 'text-success' %></td>
-          <% if current_user == event.creator %>
-            <td><%= editing_events(event, current_user) %></td>
-            <td><%= deleting_events(event, current_user) %></td>
-          <%end%>
-      </tr>
-        <% end %>
-      <% end %>
+      <%=upcoming_events(@coming_events)%>
     </tbody>
   </table>
 </div>

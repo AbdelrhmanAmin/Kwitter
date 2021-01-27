@@ -9,15 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% if @prev_events.length > 0 %>
-        <% @prev_events.each do |event| %>
-      <tr>
-          <td><%= event.title %></td>
-          <td><%= event.creator.username %></td>
-          <td><%= event.date %></td>
-      </tr>
-        <% end %>
-      <% end %>
+      <%=old_events(@prev_events)%>
     </tbody>
   </table>
 </div>

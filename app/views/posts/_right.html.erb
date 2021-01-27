@@ -4,15 +4,4 @@
   </div>
 </div>
 
-<% if user_signed_in? %>
-  <% @users.each do |user| %>
-    <% if !current_user.following?(user) && current_user != user %>
-      <div class="d-flex flex-column px-4 border border-right-0 border-left-0 border-top-0">
-        <div class="d-flex py-3">
-          <%= image_tag user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%" %>
-          <%= link_to user.username, user_path(user), class: "h6 m-3 links-color" %>
-        </div>
-      </div>
-    <% end %>
-  <%end%>
-<% end %>
+<%= who_to_follow(@users, current_user) %>

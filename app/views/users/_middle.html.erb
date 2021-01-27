@@ -2,7 +2,7 @@
   <%= tweet(@user, current_user, @post)%>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@user.posts.count) + (@user.events.count) %> TWEETS</a>
+    <a class='h6'> <%= (@user.events.count) %> EVENTS</a>
   </div>
     <% @user.events.each do |event| %>
     <div class="d-flex py-3 justify-content-between">
@@ -10,7 +10,7 @@
         <%= image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"%>
         <div class="d-flex flex-column  ml-3">
           <%= link_to event.creator.username, user_path(event.creator), class: "h6 links-color" %>
-          <span class='text-secondary'>I've just hosted "<%=event.title%>" come and <%= link_to 'attend !', event_path(event) %> </span>
+          <span class='text-secondary'>I've just hosted <strong><%=event.title%></strong> come and <%= link_to 'attend !', event_path(event) %> </span>
         </div>
       </div>
       <%= del_post(event, event.creator, current_user)%>
@@ -19,7 +19,7 @@
 </div>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@user.posts.count) + (@user.events.count) %> TWEETS</a>
+    <a class='h6'> <%= (@user.posts.count) %> TWEETS</a>
     <% @user.posts.order(created_at: :desc).each do |post| %>
         <div class="d-flex py-3 justify-content-between">
           <div class='d-flex'>
