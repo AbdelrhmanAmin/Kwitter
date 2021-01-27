@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :sessions
   resources :relationships
+  get '/users', to: 'users#new'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
