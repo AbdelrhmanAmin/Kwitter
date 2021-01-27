@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :events, foreign_key: :creator_id
+  has_many :attendances, class_name: 'Attendee', foreign_key: :user_id
+  has_many :attended_events, through: :attendances
   ## ACTIVE RELATIONSHIPS: You [follower] following someone [followed]
   ## PASSIVE RELATIONSHIPS: Someone [follower] following you [followed]
   def follow(other)

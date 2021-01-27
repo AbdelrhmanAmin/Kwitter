@@ -102,3 +102,11 @@ a {
   font-size: 30px;
   margin-top: -10px;
 }
+.med {
+  z-index: 1;
+  position: relative;
+}
+.foot {
+  z-index: 100;
+  position: relative;
+}

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h2>Old Events</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @prev_events.length > 0 %>
+        <% @prev_events.each do |event| %>
+      <tr>
+          <td><%= event.title %></td>
+          <td><%= event.creator.username %></td>
+          <td><%= event.date %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
