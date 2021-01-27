@@ -13,7 +13,15 @@
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
     <a class='h6'> <%= @user.posts.count%> TWEETS</a>
   </div>
-  <% if @user.posts.length > 0%>
+        <% @user.events.each do |event| %>
+        <div class="d-flex py-3">
+          <%= image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"%>
+          <div class="d-flex flex-column  ml-3">
+            <%= link_to event.creator.username, user_path(event.creator), class: "h6 links-color" %>
+            <span class='text-secondary'>I've just hosted "<%=event.title%>" come and <%= link_to 'attend !', event_path(event) %> </span>
+          </div>
+        </div>
+    <% end %>
     <% @user.posts.order(created_at: :desc).each do |post| %>
         <div class="d-flex py-3 justify-content-between">
           <div class='d-flex'>
@@ -27,8 +35,5 @@
             <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger'%>
           <% end %>
         </div>
-  <% end %>
-  <%else user_signed_in? && @posts.length < 1 %>
-    <h5 class='p-3'>It's little bit quite here.</h5>
-  <%end%>
+    <% end %>
 </div>

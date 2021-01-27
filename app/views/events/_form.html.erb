@@ -22,7 +22,11 @@
     </div>
     <%= form.label :date %>
     <div class="form-group">
-      <%= form.date_field :date, min: '2021-01-01' %> <br>
+      <%= form.date_field :date, min: Date.today %> <br>
+    </div>
+    <%= form.label :content %>
+    <div class="form-group">
+      <%= form.text_area(:content, size: '50x10', :input_html => {:minlength => 10} ) %>
     </div>
     <br>
     <%= form.submit 'Create event', class:'btn btn-warning text-white' %>

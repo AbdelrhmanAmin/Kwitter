@@ -3,6 +3,9 @@ class PostsController < ApplicationController
   @posts = Post.all.order(created_at: :desc)
   @post = Post.new
   @users = User.all.order(created_at: :desc)
+  @events = Event.all.order(created_at: :desc)
+  @coming_events = Event.coming_events
+  @prev_events = Event.old_events
   end
   def new
   end
