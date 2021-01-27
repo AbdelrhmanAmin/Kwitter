@@ -1,27 +1,25 @@
 <%= image_tag @user.thumbnail(@user), style: 'width:100%'%>
-<% if current_user == @user %>
-  <div class=" bg-white p-3 m-5">
-    <h4>TWEET</h4>
-    <%= form_for @post, html: { class: 'form-inline' } do |form| %>
-        <%= form.text_field :content, class: 'form-control', placeholder: 'compose a tweet' %>
-        <%= form.submit "TWEET", class: 'btn btn-info text-white'%>
-    <%end%>
-  </div>
-<%end%>
-
+  <%= tweet(@user, current_user, @post)%>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
     <a class='h6'> <%= (@user.posts.count) + (@user.events.count) %> TWEETS</a>
   </div>
-        <% @user.events.each do |event| %>
-        <div class="d-flex py-3">
-          <%= image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"%>
-          <div class="d-flex flex-column  ml-3">
-            <%= link_to event.creator.username, user_path(event.creator), class: "h6 links-color" %>
-            <span class='text-secondary'>I've just hosted "<%=event.title%>" come and <%= link_to 'attend !', event_path(event) %> </span>
-          </div>
+    <% @user.events.each do |event| %>
+    <div class="d-flex py-3 justify-content-between">
+      <div class='d-flex'>
+        <%= image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"%>
+        <div class="d-flex flex-column  ml-3">
+          <%= link_to event.creator.username, user_path(event.creator), class: "h6 links-color" %>
+          <span class='text-secondary'>I've just hosted "<%=event.title%>" come and <%= link_to 'attend !', event_path(event) %> </span>
         </div>
+      </div>
+      <%= del_post(event, event.creator, current_user)%>
+    </div>
     <% end %>
+</div>
+<div class=" bg-white p-3 m-5">
+  <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
+    <a class='h6'> <%= (@user.posts.count) + (@user.events.count) %> TWEETS</a>
     <% @user.posts.order(created_at: :desc).each do |post| %>
         <div class="d-flex py-3 justify-content-between">
           <div class='d-flex'>
@@ -31,9 +29,8 @@
               <span class='text-secondary'><%=post.content%> </span>
             </div>
           </div>
-          <% if current_user == @user%>
-            <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger'%>
-          <% end %>
+          <%= del_post(post, @user, current_user)%>
         </div>
     <% end %>
+</div>
 </div>

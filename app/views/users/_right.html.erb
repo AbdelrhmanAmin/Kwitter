@@ -4,19 +4,7 @@
     <%= image_tag @user.image, style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
     <h6 class='h6 mt-2'><%= @user.username%></h6>
     <small class='text-secondary'>@<%= @user.fullname%></small>
-    <% if user_signed_in? %>
-      <% if !current_user.following?(@user) && current_user != @user  %>
-        <%= form_for(current_user.active_relationships.build) do |form| %>
-          <%= form.hidden_field :followed_id, value: @user.id %>
-          <%= form.submit 'Follow', class: 'btn btn-info text-white' %>
-        <%end%>
-      <% elsif current_user != @user%>
-        <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-            html: { method: :delete}) do |f| %>
-            <%= f.submit 'Unfollow', class: 'btn btn-default'%>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= profile(@user, current_user)%>
   </div>
   <div class="d-flex  followers px-1">
     <div class='d-flex flex-column align-items-center border py-2 px-3  border-left-0'>

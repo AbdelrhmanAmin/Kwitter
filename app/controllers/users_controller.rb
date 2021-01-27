@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @users = User.all.order(created_at: :desc)
     @user = User.find(params[:id])
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     @following = Relationship.new
   end
 
