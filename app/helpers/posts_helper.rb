@@ -2,7 +2,7 @@ module PostsHelper
   def header(current_user)
     out = ''
     if user_signed_in?
-      out << "<li>#{link_to current_user.username, user_path(current_user), class: 'header-links h5 mr-5'}</li>
+      out << "<li>#{link_to current_user.fullname, user_path(current_user), class: 'header-links h5 mr-5'}</li>
       <li> #{link_to 'logout', logout_path, class: 'header-links h5 mr-5'} </li>"
     else
       out << "<li> #{link_to 'Login', login_path, class: 'mx-2'} </li>
@@ -18,7 +18,7 @@ module PostsHelper
           out << "<div class='d-flex flex-column px-4 border border-right-0 border-left-0 border-top-0'>
             <div class='d-flex py-3'>
               #{image_tag user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%"}
-              #{link_to user.username, user_path(user), class: "h6 m-3 links-color" }
+              #{link_to user.fullname, user_path(user), class: "h6 m-3 links-color" }
             </div>
           </div>"
          end 
@@ -31,7 +31,7 @@ module PostsHelper
     if user_signed_in?
       out << "<div class='d-flex  align-items-center py-3 px-3'>
           #{image_tag current_user.profile_picture(current_user)}
-          #{link_to current_user.username, user_path(current_user), class: 'h6 m-3 links-color'}
+          #{link_to current_user.fullname, user_path(current_user), class: 'h6 m-3 links-color'}
         </div>
         <div class='d-flex justify-content-around followers px-1'>
           <div class='d-flex flex-column align-items-center border py-2 px-4 border-dark border-left-0'>
@@ -103,7 +103,7 @@ module PostsHelper
             <div class='d-flex py-3'>
               #{image_tag post.user.image, style: "width: 50px; height: 50px; display:block;"}
               <div class='d-flex flex-column  ml-3'>
-                #{link_to post.user.username, user_path(post.user), class: "h6 links-color"}
+                #{link_to post.user.fullname, user_path(post.user), class: "h6 links-color"}
                 <span class='text-secondary'>#{post.content}</span>
               </div>
             </div>

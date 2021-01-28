@@ -2,8 +2,7 @@
   
   <div class="d-flex border border-right-0 border-left-0 border-top-0 py-4 flex-column align-items-center">
     <%= image_tag @user.image, style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
-    <h6 class='h6 mt-2'><%= @user.username%></h6>
-    <small class='text-secondary'>@<%= @user.fullname%></small>
+    <h6 class='h6 mt-2'><%= @user.fullname%></h6>
     <%= profile(@user, current_user)%>
   </div>
   <div class="d-flex  followers px-1">
@@ -33,7 +32,7 @@
     <div class="d-flex flex-column px-4">
       <div class="d-flex py-3">
         <%= image_tag user.profile_picture(user) %>
-        <%= link_to user.username, user_path(user), class: "h6 m-3 links-color" %>
+        <%= link_to user.fullname, user_path(user), class: "h6 m-3 links-color" %>
       </div>
     </div>
   <%end%>

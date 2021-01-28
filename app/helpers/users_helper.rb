@@ -23,7 +23,7 @@ module UsersHelper
   def header(current_user)
     out = ''
     if user_signed_in?
-      out << "<li>#{link_to current_user.username, user_path(current_user), class: 'header-links h5 mr-5'}</li>
+      out << "<li>#{link_to current_user.fullname, user_path(current_user), class: 'header-links h5 mr-5'}</li>
       <li> #{link_to 'logout', logout_path, class: 'header-links h5 mr-5'} </li>"
     else
       out << "<li> #{link_to 'Login', login_path, class: 'mx-2'} </li>
@@ -36,7 +36,7 @@ module UsersHelper
     if user_signed_in?
       out << "<div class='d-flex  align-items-center py-3 px-3'>
           #{image_tag current_user.profile_picture(current_user)}
-          #{link_to current_user.username, user_path(current_user), class: 'h6 m-3 links-color'}
+          #{link_to current_user.fullname, user_path(current_user), class: 'h6 m-3 links-color'}
         </div>
         <div class='d-flex justify-content-around followers px-1'>
           <div class='d-flex flex-column align-items-center border py-2 px-4 border-dark border-left-0'>

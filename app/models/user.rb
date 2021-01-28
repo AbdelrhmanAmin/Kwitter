@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   validates :username,  presence: true, length: { in: 3..12 }, format: { without: /\s/ }
-  validates :fullname, presence: true, length: { maximum: 20 }
+  validates :fullname, presence: true, length: { maximum: 20 }, format: { with:  /\A[a-zA-Z ]+\z/ }
   validates :username,  uniqueness: true
+  validates :fullname,  uniqueness: true
   has_one_attached :image
   has_one_attached :cover
   validate :image_type

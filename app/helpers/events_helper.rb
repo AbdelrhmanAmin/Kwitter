@@ -53,7 +53,7 @@ module EventsHelper
     if user_signed_in?
       out << "
       <li>#{link_to 'Create Event', new_event_path, class: 'header-links  text-white h5 mr-5'}</li>
-      <li>#{link_to current_user.username, user_path(current_user), class: 'header-links h5 mr-5'}</li>
+      <li>#{link_to current_user.fullname, user_path(current_user), class: 'header-links h5 mr-5'}</li>
       <li>#{link_to 'logout', logout_path, class: 'header-links h5 mr-5'}</li>"
     else
       out << "<li>#{link_to 'Login', login_path, class: 'mx-2'}</li>
@@ -89,7 +89,7 @@ module EventsHelper
       coming_events.each do |event|
       out << "<tr>
           <td>#{event.title}</td>
-          <td>#{event.creator.username}</td>
+          <td>#{event.creator.fullname}</td>
           <td>#{event.date}</td>
           <td>#{link_to 'Show', event, class: 'text-success'}</td>
       </tr>"
@@ -122,7 +122,7 @@ module EventsHelper
       prev_events.each do |event|
        out << "<tr>
           <td>#{event.title }</td>
-          <td>#{event.creator.username }</td>
+          <td>#{event.creator.fullname }</td>
           <td>#{event.date }</td>
         </tr>"
       end
@@ -162,7 +162,7 @@ module EventsHelper
       <div class='d-flex py-3'>
         #{image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"}
         <div class='d-flex flex-column  ml-3'>
-          #{link_to event.creator.username, user_path(event.creator), class: "h6 links-color"}
+          #{link_to event.creator.fullname, user_path(event.creator), class: "h6 links-color"}
           <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}</span>
         </div>
       </div>
