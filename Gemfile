@@ -5,11 +5,12 @@ ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+group :production do
+  gem 'pg'
+end
+gem 'rack-timeout', '0.3.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -62,6 +63,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-group :production do
-  gem 'pg'
-end
