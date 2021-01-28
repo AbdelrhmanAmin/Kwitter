@@ -1,7 +1,7 @@
 
   
   <div class="d-flex border border-right-0 border-left-0 border-top-0 py-4 flex-column align-items-center">
-    <%= image_tag @user.image, style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
+    <%= image_tag 'https://placekitten.com/200/139', style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
     <h6 class='h6 mt-2'><%= @user.fullname%></h6>
     <%= profile(@user, current_user)%>
   </div>
@@ -31,7 +31,7 @@
   <% @user.followers.each do |user| %>
     <div class="d-flex flex-column px-4">
       <div class="d-flex py-3">
-        <%= image_tag user.profile_picture(user) %>
+        <%= img_replacer(user) %>
         <%= link_to user.fullname, user_path(user), class: "h6 m-3 links-color" %>
       </div>
     </div>

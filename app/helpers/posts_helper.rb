@@ -17,7 +17,7 @@ module PostsHelper
         if !current_user.following?(user) && current_user != user 
           out << "<div class='d-flex flex-column px-4 border border-right-0 border-left-0 border-top-0'>
             <div class='d-flex py-3'>
-              #{image_tag user.image, style: "width: 50px; height: 50px; display:block; border-radius: 50%"}
+              #{img_replacer(user)}
               #{link_to user.fullname, user_path(user), class: "h6 m-3 links-color" }
             </div>
           </div>"
@@ -30,7 +30,7 @@ module PostsHelper
     out = ''
     if user_signed_in?
       out << "<div class='d-flex  align-items-center py-3 px-3'>
-          #{image_tag current_user.profile_picture(current_user)}
+          #{img_replacer(current_user)}
           #{link_to current_user.fullname, user_path(current_user), class: 'h6 m-3 links-color'}
         </div>
         <div class='d-flex justify-content-around followers px-1'>
@@ -101,7 +101,7 @@ module PostsHelper
            out << "
            <div class='d-flex py-3 justify-content-between align-items-center'>
             <div class='d-flex py-3'>
-              #{image_tag post.user.image, style: "width: 50px; height: 50px; display:block;"}
+              #{img_replacer(post.user)}
               <div class='d-flex flex-column  ml-3'>
                 #{link_to post.user.fullname, user_path(post.user), class: "h6 links-color"}
                 <span class='text-secondary'>#{post.content}</span>

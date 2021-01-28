@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :username,  presence: true, length: { in: 3..12 }, format: { without: /\s/ }
-  validates :fullname, presence: true, length: { maximum: 20 }, format: { with:  /\A[a-zA-Z ]+\z/ }
+  validates :fullname, presence: true, length: { in: 3..12 }, format: { with:  /\A[a-zA-Z ]+\z/ }
   validates :username,  uniqueness: true
   validates :fullname,  uniqueness: true
   has_one_attached :image
@@ -38,12 +38,6 @@ class User < ApplicationRecord
   
   private
   def image_type
-    if image.attached? == false
-      errors.add(:image, "is missing!")
-    end
-    if cover.attached? == false
-      errors.add(:cover, "is missing!")
-    end
     if image.attached? && !image.content_type.in?(%w(image/jpeg image/png image/gif))
       errors.add(:image, "Must be JPEG OR PNG OR GIF!")
     end
