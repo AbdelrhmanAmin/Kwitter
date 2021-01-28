@@ -147,20 +147,20 @@ module EventsHelper
     end
     out.html_safe
   end
-    def del_event(event, user, current_user)
+  def del_event(event, user, current_user)
     out = ''
     if current_user == user
       out << "#{button_to 'Delete', event_path(event.id), method: :delete, class: 'btn btn-outline-danger'}"
     end
     out.html_safe
   end
-    def events(coming_events, current_user)
+  def events(coming_events, current_user)
     out = ''
     coming_events.each do |event|
     out << "
       <div class='d-flex py-3 justify-content-between align-items-center'>
       <div class='d-flex py-3'>
-        #{image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"}
+        #{img_replacer(event.creator)}
         <div class='d-flex flex-column  ml-3'>
           #{link_to event.creator.fullname, user_path(event.creator), class: "h6 links-color"}
           <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}</span>

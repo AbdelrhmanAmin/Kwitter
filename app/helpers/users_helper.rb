@@ -35,7 +35,7 @@ module UsersHelper
     out = ''
     if user_signed_in?
       out << "<div class='d-flex  align-items-center py-3 px-3'>
-          #{image_tag current_user.profile_picture(current_user)}
+          #{img_replacer(current_user)}
           #{link_to current_user.fullname, user_path(current_user), class: 'h6 m-3 links-color'}
         </div>
         <div class='d-flex justify-content-around followers px-1'>
