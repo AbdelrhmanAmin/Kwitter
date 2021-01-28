@@ -65,17 +65,17 @@ module EventsHelper
     out = ''
       if user_signed_in?
         out << "<div class='d-flex w-100 px-3 py-2 align-items-center'>
-          <i class='fa fa-user'></i>
+          👤
           #{link_to 'Profile', user_path(current_user), class: 'w-100 h6 links-color ml-3'}
         </div>
           <div class='d-flex bg-select w-100  px-3 py-2 align-items-center'>
-            <i class='fas fa-calendar-alt text-white'></i>
+            📅
               #{link_to 'Events', events_path, class: 'w-100 h6 text-white links-color ml-3'}
           </div>"
       else
-        out << "<div class='d-flex  w-100  px-3 py-2 align-items-center'>
-          <i class='fas fa-calendar-alt'></i>
-            #{link_to 'Events', events_path, class: 'w-100 h6 links-color ml-3'}
+        out << "<div class='d-flex bg-select w-100  px-3 py-2 align-items-center'>
+          📅
+            #{link_to 'Events', events_path, class: 'w-100 h6 text-white links-color ml-3'}
         </div>
         <ul class='d-flex  w-100 mx-2  py-2 align-items-start flex-column list-unstyled'>
           <li>#{link_to 'Login', login_path}</li>
