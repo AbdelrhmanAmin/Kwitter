@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row h-100">
+    <div class="col-2 grid-left p-0">
+      <%= render 'left' %>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <div class="col-12 p-0">
+          <%= render 'header' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9  border border-top-0 border-left-0 border-bottom-0 p-5">
+          <%= form_with(model: user, local: true, html:{class: 'form-horizontal'} ) do |form| %>
+            <%= error_msg(user)%>
+
+            <div class="form-group my-3">
+              <%= form.label :username, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.text_field :username %>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :fullname, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.text_field :fullname %>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :image, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.file_field :image %>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :cover, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.file_field :cover %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <%= form.submit 'Join the cathood 😽', class: 'btn btn-dark my-2' %>
+            </div>
+          <% end %>
+          </div>
+                </div>
+    </div>
+  </div>
+</div>
+<%= render 'footer' %>

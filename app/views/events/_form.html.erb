@@ -1,0 +1,22 @@
+<%= form_with(model: event) do |form| %>
+    <%= form.label :title %>
+    <div class="form-group">
+      <%= form.text_field :title, value: event.title %> <br>
+    </div>
+    <%= form.label :cover %>
+    <div class="form-group">
+      <%= form.file_field :cover %> <br>
+    </div>
+    <%= form.label :date %>
+    <div class="form-group">
+      <%= form.date_field :date, min: Date.today %> <br>
+    </div>
+    <%= form.label :content %>
+    <div class="form-group">
+      <%= form.text_area(:content, size: '50x10', :input_html => {:minlength => 10} ) %>
+    </div>
+    <br>
+  <div class="actions">
+    <%= form.submit 'Create event', class:'btn btn-warning text-white' %>
+  </div>
+<% end %>
