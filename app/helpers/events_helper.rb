@@ -86,25 +86,39 @@ module EventsHelper
   end
   def upcoming_events(coming_events)
     out = ''
-    if coming_events.length > 0
-       coming_events.each do |event|
+      coming_events.each do |event|
       out << "<tr>
           <td>#{event.title}</td>
           <td>#{event.creator.username}</td>
           <td>#{event.date}</td>
           <td>#{link_to 'Show', event, class: 'text-success'}</td>
-        #{if current_user == event.creator
-            "<td>#{editing_events(event, current_user)}</td>
-            <td>#{deleting_events(event, current_user)}</td>"
-        end}
       </tr>"
-      end
+    end
+    out.html_safe
+  end
+  def middle_up_coming_events(coming_events)
+    out = ''
+    if coming_events.length > 0
+     out << "<h2>Upcoming Events</h2>
+      <table class='table table-bordered'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>date</th>
+          </tr>
+        </thead>
+        <tbody>
+          #{upcoming_events(coming_events)}
+        </tbody>
+      </table>"
+     else
+      out << "<h3 class='text-center p-3'>Host an event! 🐱</h3>"
     end
     out.html_safe
   end
   def old_events(prev_events)
     out = ''
-    if prev_events.length > 0
       prev_events.each do |event|
        out << "<tr>
           <td>#{event.title }</td>
@@ -112,6 +126,49 @@ module EventsHelper
           <td>#{event.date }</td>
         </tr>"
       end
+      out.html_safe
+  end
+  def right_old_events(prev_events)
+    out = ''
+    if prev_events.length > 0
+    out <<  "<h2>Old Events</h2>
+      <table class='table table-bordered'>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Creator</th>
+              <th>date</th>
+            </tr>
+          </thead>
+          <tbody>
+            #{old_events(prev_events)}
+          </tbody>
+        </table>"
+    end
+    out.html_safe
+  end
+    def del_event(event, user, current_user)
+    out = ''
+    if current_user == user
+      out << "#{button_to 'Delete', event_path(event.id), method: :delete, class: 'btn btn-outline-danger'}"
+    end
+    out.html_safe
+  end
+    def events(coming_events, current_user)
+    out = ''
+    coming_events.each do |event|
+    out << "
+      <div class='d-flex py-3 justify-content-between align-items-center'>
+      <div class='d-flex py-3'>
+        #{image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"}
+        <div class='d-flex flex-column  ml-3'>
+          #{link_to event.creator.username, user_path(event.creator), class: "h6 links-color"}
+          <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}</span>
+        </div>
+      </div>
+        #{del_event(event, event.creator, current_user)}
+      </div>
+      "
     end
     out.html_safe
   end

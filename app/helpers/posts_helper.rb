@@ -86,35 +86,34 @@ module PostsHelper
     end
     out.html_safe
   end
-  def posts(posts)
+  def del_post(post, user, current_user)
+    out = ''
+    if current_user == user
+      out << "#{button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger'}"
+    end
+    out.html_safe
+  end  
+
+  def posts(posts, current_user)
     out = ''
       if posts.length > 0
         posts.each do |post|
-           out << " <div class='d-flex py-3'>
+           out << "
+           <div class='d-flex py-3 justify-content-between align-items-center'>
+            <div class='d-flex py-3'>
               #{image_tag post.user.image, style: "width: 50px; height: 50px; display:block;"}
               <div class='d-flex flex-column  ml-3'>
                 #{link_to post.user.username, user_path(post.user), class: "h6 links-color"}
                 <span class='text-secondary'>#{post.content}</span>
               </div>
-            </div>"
+            </div>
+              #{del_post(post, post.user, current_user)}
+            </div>
+            "
         end
       else
         out <<"<h5 class='p-3'>Be the first one to tweet.</h5>"
       end
       out.html_safe
-  end
-  def events(coming_events)
-    out = ''
-    coming_events.each do |event|
-    out << "
-      <div class='d-flex py-3'>
-        #{image_tag event.creator.image, style: "width: 50px; height: 50px; display:block;"}
-        <div class='d-flex flex-column  ml-3'>
-          #{link_to event.creator.username, user_path(event.creator), class: "h6 links-color"}
-          <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}</span>
-        </div>
-      </div>"
-    end
-    out.html_safe
   end
 end

@@ -3,11 +3,11 @@
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
     <a class='h6'> <%= (@posts.count) %> TWEETS</a>
   </div>
-<%= posts(@posts)%>
+<%= posts(@posts, current_user)%>
 </div>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
     <a class='h6'> <%= (@coming_events.count) %> EVENTS</a>
     </div>
-<%= events(@coming_events)%>
+<%= events(@coming_events, current_user)%>
 </div>
