@@ -22,7 +22,7 @@ module ApplicationHelper
   def event_replacer(event)
     out=''
     out << "#{ if event.cover.attached?
-      image_tag event.creator.profile_picture(event.creator), style: "width: 100%; height:250px;"
+      image_tag event.cover, style: "width: 100%; height:250px;"
       else
       image_tag('https://placekitten.com/250/300', style: "width: 100%; height:250px;")
       end
