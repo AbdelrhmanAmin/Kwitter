@@ -33,6 +33,13 @@
 - fontawesome gem
 - Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers
 
+## Screenshots
+
+![screneshot](./homepage.png)
+![screneshot](./userpage.png)
+![screneshot](./eventpage.png)
+![screneshot](./eventshow.png)
+
 ## Live Demo
 
 [Heroku App Link](https://mysterious-citadel-12763.herokuapp.com/)

@@ -1,4 +1,5 @@
-# frozen_string_literal: true
+# rubocop:disable Metrics/ModuleLength
+# rubocop:disable Style/GuardClause
 
 module EventsHelper
   def editing_events(event, user)
@@ -174,9 +175,11 @@ module EventsHelper
       <div class='d-flex py-3'>
         #{img_replacer(event.creator)}
         <div class='d-flex flex-column  ml-3'>
-          #{link_to event.creator.fullname, user_path(event.creator), class: 'h6 links-color'}
-          <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !',
-                                                                                                           event_path(event)}</span>
+          #{link_to event.creator.fullname, user_path(event.creator),
+                    class: 'h6 links-color'}
+          <span class='text-secondary'>I've just hosted
+          <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}
+          </span>
         </div>
       </div>
         #{del_event(event, event.creator, current_user)}
@@ -186,3 +189,5 @@ module EventsHelper
     out.html_safe
   end
 end
+# rubocop:enable Metrics/ModuleLength
+# rubocop:enable Style/GuardClause

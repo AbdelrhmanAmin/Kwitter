@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module SessionsHelper
   def header(current_user)
     out = ''

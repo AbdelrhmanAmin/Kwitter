@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# rubocop:disable Metrics/ModuleLength
 
 module UsersHelper
   def error_msg(user)
@@ -126,3 +126,4 @@ module UsersHelper
     out.html_safe
   end
 end
+# rubocop:enable Metrics/ModuleLength

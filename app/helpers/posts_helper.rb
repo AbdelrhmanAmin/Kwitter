@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# rubocop:disable Metrics/ModuleLength
 
 module PostsHelper
   def header(current_user)
@@ -124,3 +124,4 @@ module PostsHelper
     out.html_safe
   end
 end
+# rubocop:enable Metrics/ModuleLength

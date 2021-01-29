@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'shoulda/matchers'
@@ -36,8 +34,8 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  Shoulda::Matchers.configure do |config2|
+    config2.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end

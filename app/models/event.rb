@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# rubocop:disable Style/GuardClause
 
 class Event < ApplicationRecord
   after_save :auto_populate_creator
@@ -35,3 +35,4 @@ class Event < ApplicationRecord
     end
   end
 end
+# rubocop:enable Style/GuardClause
