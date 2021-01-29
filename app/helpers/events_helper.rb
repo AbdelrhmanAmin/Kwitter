@@ -160,7 +160,7 @@ module EventsHelper
     out << "
       <div class='d-flex py-3 justify-content-between align-items-center'>
       <div class='d-flex py-3'>
-        #{img_replacer(event.creator)}
+        #{event_replacer(event)}
         <div class='d-flex flex-column  ml-3'>
           #{link_to event.creator.fullname, user_path(event.creator), class: "h6 links-color"}
           <span class='text-secondary'>I've just hosted <strong>#{event.title}</strong> come and #{link_to 'attend !', event_path(event)}</span>
