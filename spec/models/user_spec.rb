@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -11,7 +13,7 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:posts) }
     it { should have_many(:events) }
-    it { should have_many(:following)}
+    it { should have_many(:following) }
     it { should have_many(:followers) }
     it { should have_many(:attendances).with_foreign_key(:user_id).class_name('Attendee') }
     it { should have_many(:attended_events) }

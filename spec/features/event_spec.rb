@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Events', type: :feature do
   before :each do
     @user1 = User.create!(fullname: 'Ali Zien', username: 'Ali_Zien')
     @user2 = User.create!(fullname: 'Abdo Amin', username: 'Abdo_Amin')
-    @event = Event.create(creator_id: @user1.id, title: "Let's meditate", date: Date.today, content:'I love to meditate a lot!!!')
+    @event = Event.create(creator_id: @user1.id, title: "Let's meditate", date: Date.today,
+                          content: 'I love to meditate a lot!!!')
   end
 
   it 'Should create an opinion' do

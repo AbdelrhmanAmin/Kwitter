@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Attendee < ApplicationRecord
   validates :user_id, presence: true
   validates :event_id, presence: true

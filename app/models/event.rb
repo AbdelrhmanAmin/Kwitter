@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   after_save :auto_populate_creator
   validates :title, presence: true, uniqueness: true
@@ -22,12 +24,14 @@ class Event < ApplicationRecord
   scope :old_events, -> { where(['events.date < ?', Date.today]) }
   scope :coming_events, -> { where(['events.date >= ?', Date.today]) }
   def cover_event(event)
-    return event.cover.variant(resize: "400x250!").processed
+    event.cover.variant(resize: '400x250!').processed
   end
+
   private
+
   def image_type
-    if cover.attached? && !cover.content_type.in?(%w(image/jpeg image/png image/gif))
-      errors.add(:cover, "Must be JPEG OR PNG OR GIF!")
+    if cover.attached? && !cover.content_type.in?(%w[image/jpeg image/png image/gif])
+      errors.add(:cover, 'Must be JPEG OR PNG OR GIF!')
     end
   end
 end

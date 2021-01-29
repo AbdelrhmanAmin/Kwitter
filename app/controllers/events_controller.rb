@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
@@ -28,18 +30,14 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-    if @event.save
-      redirect_to events_path
-    end
+    redirect_to events_path if @event.save
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-    if @event.update(event_params)
-      redirect_to events_path
-    end
+    redirect_to events_path if @event.update(event_params)
   end
 
   # DELETE /events/1

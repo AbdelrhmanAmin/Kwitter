@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def error_msg(user)
     out = ''
     if user.errors.any?
-     out << "<div id='error_explanation'>
+      out << "<div id='error_explanation'>
         <h2>
-        #{pluralize(user.errors.count, "error")} prohibited this user from being saved:
+        #{pluralize(user.errors.count, 'error')} prohibited this user from being saved:
         </h2>
         <ul>
           #{err_msg(user)}
@@ -13,24 +15,27 @@ module UsersHelper
     end
     out.html_safe
   end
+
   def err_msg(user)
-      out = ''
-         user.errors.full_messages.each do |message|
-          out << "<li>#{message}</li>"
-        end
-      out.html_safe
-  end
-  def header(current_user)
     out = ''
-    if user_signed_in?
-      out << "<li>#{link_to current_user.fullname, user_path(current_user), class: 'header-links h5 mr-5'}</li>
-      <li> #{link_to 'logout', logout_path, class: 'header-links h5 mr-5'} </li>"
-    else
-      out << "<li> #{link_to 'Login', login_path, class: 'mx-2'} </li>
-      <li> #{link_to 'signup', signup_path, class: 'mx-2'} </li>"
+    user.errors.full_messages.each do |message|
+      out << "<li>#{message}</li>"
     end
     out.html_safe
   end
+
+  def header(current_user)
+    out = ''
+    out << if user_signed_in?
+             "<li>#{link_to current_user.fullname, user_path(current_user), class: 'header-links h5 mr-5'}</li>
+      <li> #{link_to 'logout', logout_path, class: 'header-links h5 mr-5'} </li>"
+           else
+             "<li> #{link_to 'Login', login_path, class: 'mx-2'} </li>
+      <li> #{link_to 'signup', signup_path, class: 'mx-2'} </li>"
+           end
+    out.html_safe
+  end
+
   def dashboard(current_user)
     out = ''
     if user_signed_in?
@@ -55,10 +60,11 @@ module UsersHelper
     end
     out.html_safe
   end
+
   def links(current_user)
     out = ''
-      if user_signed_in?
-        out << "<div class='d-flex bg-select w-100 px-3 py-2 align-items-center'>
+    out << if user_signed_in?
+             "<div class='d-flex bg-select w-100 px-3 py-2 align-items-center'>
           👤
           #{link_to 'Profile', user_path(current_user), class: 'text-white w-100 h6 links-color ml-3'}
         </div>
@@ -66,8 +72,8 @@ module UsersHelper
             📅
               #{link_to 'Events', events_path, class: 'w-100 h6 links-color ml-3'}
           </div>"
-      else
-        out << "<div class='d-flex  w-100  px-3 py-2 align-items-center'>
+           else
+             "<div class='d-flex  w-100  px-3 py-2 align-items-center'>
           📅
             #{link_to 'Events', events_path, class: 'w-100 h6 links-color ml-3'}
         </div>
@@ -75,41 +81,44 @@ module UsersHelper
           <li>#{link_to 'Login', login_path}</li>
           <li>#{link_to 'signup', signup_path}</li>
         </ul>"
-      end
+           end
     out.html_safe
   end
-  def profile(user,current_user)
+
+  def profile(user, current_user)
     out = ''
-        if user_signed_in? 
-          if !current_user.following?(user) && current_user != user
-            out << "
+    if user_signed_in?
+      if !current_user.following?(user) && current_user != user
+        out << "
               #{form_for(current_user.active_relationships.build) do |form|
-                concat form.hidden_field :followed_id, value: user.id
-                concat form.submit 'Follow', class: 'btn btn-info text-white'
-            end}"
-          elsif current_user != user
-            out << "#{form_for(current_user.active_relationships.find_by(followed_id: user.id),
-                html: { method: :delete}) do |f|
-                f.submit 'Unfollow', class: 'btn btn-default'
-              end}"
-          end
-        end
-    out.html_safe
-  end
-  def del_post(post, user, current_user)
-    out = ''
-    if current_user == user
-      out << "#{button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger'}"
+                  concat form.hidden_field :followed_id, value: user.id
+                  concat form.submit 'Follow', class: 'btn btn-info text-white'
+                end}"
+      elsif current_user != user
+        out << (form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                         html: { method: :delete }) do |f|
+                  f.submit 'Unfollow', class: 'btn btn-default'
+                end).to_s
+      end
     end
     out.html_safe
   end
+
+  def del_post(post, user, current_user)
+    out = ''
+    if current_user == user
+      out << (button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-outline-danger').to_s
+    end
+    out.html_safe
+  end
+
   def tweet(user, current_user, post)
     out = ''
     if current_user == user
       out << "<div class='bg-white p-3 m-5'>
         <h4>TWEET</h4>
-        #{form_for post, html: { class: 'form-inline' } do |form| 
-          concat form.text_field :content, class: 'form-control', placeholder: 'compose a tweet' 
+        #{form_for post, html: { class: 'form-inline' } do |form|
+          concat form.text_field :content, class: 'form-control', placeholder: 'compose a tweet'
           concat form.submit 'TWEET', class: 'btn btn-info text-white'
         end}
       </div>"

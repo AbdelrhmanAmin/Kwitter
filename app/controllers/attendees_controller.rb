@@ -1,5 +1,6 @@
-class AttendeesController < ApplicationController
+# frozen_string_literal: true
 
+class AttendeesController < ApplicationController
   # GET /attendees
   # GET /attendees.json
   def index
@@ -23,9 +24,7 @@ class AttendeesController < ApplicationController
   def create
     @attendee = Attendee.create!(attendee_params)
 
-      if @attendee.save
-        redirect_to events_path
-      end
+    redirect_to events_path if @attendee.save
   end
 
   def destroy
