@@ -1,47 +1,52 @@
-<%= link_to "Homepage", root_path %>
-<%= form_with(model: user, local: true, html:{class: 'form-horizontal'} ) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container-fluid">
+  <div class="row h-100">
+    <div class="col-2 grid-left p-0">
+      <%= render 'left' %>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= form.label :username, class: 'control-label col-2' %>
     <div class="col-10">
-      <%= form.text_field :username %>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <%= form.label :image, class: 'control-label col-2' %>
-    <div class="col-10">
-      <%= form.file_field :image %>
-    </div>
-  </div>
-  <div class="field">
-    <%= form.label :cover, class: 'control-label col-2' %>
-    <div class="col-10">
-      <%= form.file_field :cover %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-12 p-0">
+          <%= render 'header' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9  border border-top-0 border-left-0 border-bottom-0 p-5">
+          <%= form_with(model: user, local: true, html:{class: 'form-horizontal'} ) do |form| %>
+            <%= error_msg(user)%>
 
+            <div class="form-group my-3">
+              <%= form.label :username, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.text_field :username %><br>
+                <small class='text-danger'>No spaces! i.e (Abdo Amin) <br> <span class='text-success'>Correct: i.e (AbdoAmin or Abdo_Amin)</span> </small>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :fullname, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.text_field :fullname %>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :image, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.file_field :image %>
+              </div>
+            </div>
+            <div class="form-group my-3">
+              <%= form.label :cover, class: 'control-label col-2' %>
+              <div class="col-10">
+                <%= form.file_field :cover %>
+              </div>
+            </div>
 
-  <div class="form-group">
-    <%= form.label :fullname, class: 'control-label col-2' %>
-    <div class="col-10">
-      <%= form.text_field :fullname %>
+            <div class="actions">
+              <%= form.submit 'Join the cathood 😽', class: 'btn btn-dark my-2' %>
+            </div>
+          <% end %>
+          </div>
+                </div>
     </div>
   </div>
-  
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
+<%= render 'footer' %>

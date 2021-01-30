@@ -1,41 +1,8 @@
-  <% if user_signed_in? %>
-<div class="d-flex  align-items-center py-3 px-3">
-    <%= image_tag current_user.profile_picture(current_user) %>
-    <%= link_to current_user.username, user_path(current_user), class: "h6 m-3 links-color" %>
-</div>
-<div class="d-flex justify-content-around followers px-1">
-  <div class='d-flex flex-column align-items-center border py-2 px-4 border-dark border-left-0'>
-    <span class='followers-num'> <%= current_user.following.count%> </span>
-    <span>
-      Following
-    </span>
-  </div>
-  <div class='d-flex flex-column align-items-center border border-right-0 py-2 px-4 border-dark '>
-    <span class='followers-num'> <%= current_user.followers.count%> </span>
-    <span>
-      Followers
-    </span>
-  </div>
-</div>
-<% end %>
+<%= dashboard_posts(current_user) %>
 <div class="d-flex justify-content-start flex-column links-color w-100">
-  <div class="d-flex  w-100 bg-select w-100 py-3 px-4 align-items-center">
-    <i class="fa fa-home  text-white"></i>
-    <%= link_to 'Home', root_path, class: 'w-100 h6 links-color ml-3 text-white' %>
+  <div class="d-flex  w-100  w-100 py-3 px-3 bg-select align-items-center">
+    🏠
+    <%= link_to 'Home', root_path, class: ' text-white w-100 h6 links-color ml-3' %>
   </div>
-  <% if user_signed_in? %>
-    <div class="d-flex  w-100 mx-2 px-3 py-2 align-items-center">
-      <i class="fa fa-user "></i>
-      <%= link_to 'Profile', user_path(current_user), class: 'w-100 h6 links-color ml-3' %>
-    </div>
-  <%else%>
-    <ul class="d-flex  w-100 mx-2  py-2 align-items-start flex-column list-unstyled">
-      <li><%= link_to 'Login', login_path %></li>
-      <li><%= link_to 'signup', signup_path %></li>
-    </ul>
-  <%end%>
-    <div class="d-flex  w-100 mx-2 px-3 py-2 align-items-center">
-      <i class="fas fa-calendar-alt"></i>
-      <%= link_to 'Events', events_path, class: 'w-100 h6 links-color ml-3' %>
-    </div>
+  <%=links_posts(current_user)%>
 </div>

@@ -28,8 +28,16 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-    if @event.save
-      redirect_to events_path
+    # redirect_to events_path if @event.save
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to @event, notice: 'User was successfully created.' }
+        format.json { render :index, status: :created, location: @event }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -37,9 +45,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-    if @event.update(event_params)
-      redirect_to events_path
-    end
+    redirect_to events_path if @event.update(event_params)
   end
 
   # DELETE /events/1

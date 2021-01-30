@@ -1,28 +1,3 @@
 <div class="container-fluid">
-  <h2>Upcoming Events</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Creator</th>
-        <th>date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @coming_events.length > 0 %>
-        <% @coming_events.each do |event| %>
-      <tr>
-          <td><%= event.title %></td>
-          <td><%= event.creator.username %></td>
-          <td><%= event.date %></td>
-          <td><%= link_to 'Show', event, class: 'text-success' %></td>
-          <% if current_user == event.creator %>
-            <td><%= editing_events(event, current_user) %></td>
-            <td><%= deleting_events(event, current_user) %></td>
-          <%end%>
-      </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+  <%= middle_up_coming_events(@coming_events)%>
 </div>

@@ -1,3 +1,2 @@
 module FollowingsHelper
-  
 end
