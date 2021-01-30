@@ -8,20 +8,20 @@
   </div>
   <div class="d-flex  followers px-1">
     <div class='d-flex flex-column align-items-center border py-2 px-3  border-left-0'>
-      <span class='followers-num'><%= (@user.posts.count) + (@user.events.count) %> </span>
+      <span class='followers-num'><%= (@user.posts.length) + (@user.events.length) %> </span>
       <span>
         Tweets
       </span>
     </div>
     <div class='d-flex flex-column align-items-center border py-2 px-3 border-left-0'>
-      <span class='followers-num'> <%= @user.following.count%> </span>
+      <span class='followers-num'> <%= @user.following.length%> </span>
       <span>
         Following
       </span>
     </div>
     
     <div class='d-flex flex-column align-items-center border border-right-0 py-2 px-3  '>
-      <span class='followers-num'> <%= @user.followers.count%> </span>
+      <span class='followers-num'> <%= @user.followers.length%> </span>
       <span>
         Followers
       </span>

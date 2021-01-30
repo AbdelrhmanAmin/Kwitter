@@ -45,7 +45,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # The RSpec testing framework
   gem 'rspec-rails'
-
+  gem 'bullet', '~> 6.1', '>= 6.1.3'
   # The following gems aids with the nuts and bolts
   # of interacting with the browser.
   gem 'webdrivers'

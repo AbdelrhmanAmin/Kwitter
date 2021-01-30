@@ -2,7 +2,7 @@
   <%= tweet(@user, current_user, @post)%>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@user.events.count) %> EVENTS</a>
+    <a class='h6'> <%= (@user.events.length) %> EVENTS</a>
   </div>
     <% @user.events.each do |event| %>
     <div class="d-flex py-3 justify-content-between">
@@ -19,7 +19,7 @@
 </div>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@user.posts.count) %> TWEETS</a>
+    <a class='h6'> <%= (@user.posts.length) %> TWEETS</a>
     <% @user.posts.order(created_at: :desc).each do |post| %>
         <div class="d-flex py-3 justify-content-between">
           <div class='d-flex'>

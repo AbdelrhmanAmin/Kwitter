@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts
+  resources :posts, except: [:update]
   resources :users do
     member do
       get :following, :followers

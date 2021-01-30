@@ -39,13 +39,13 @@ module PostsHelper
         </div>
         <div class='d-flex justify-content-around followers px-1'>
           <div class='d-flex flex-column align-items-center border py-2 px-4 border-dark border-left-0'>
-            <span class='followers-num'> #{current_user.following.count} </span>
+            <span class='followers-num'> #{current_user.following.length} </span>
             <span>
               Following
             </span>
           </div>
           <div class='d-flex flex-column align-items-center border border-right-0 py-2 px-4 border-dark '>
-            <span class='followers-num'> #{current_user.followers.count} </span>
+            <span class='followers-num'> #{current_user.followers.length} </span>
             <span>
               Followers
             </span>

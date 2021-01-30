@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.all.order(created_at: :desc)
-    @users = User.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc).includes(user: :image_attachment)
+    @users = User.all.order(created_at: :desc).includes([:image_attachment])
     @events = Event.all.order(created_at: :desc)
     @coming_events = Event.coming_events
     @prev_events = Event.old_events

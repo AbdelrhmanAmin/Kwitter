@@ -13,7 +13,7 @@
         <div class="col-5 py-5">
           <h2><%= @event.title %></h2>
           <span class='text-secondary'><%= @event.date %></span>
-          <h6>Created by: <%= @event.creator.username%></h6>
+          <h6>Created by: <%= @event.creator.fullname%></h6>
           <br>
           <strong>Description:</strong>
           <p><%= @event.content %></p>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).includes([:image_attachment])
     @user = User.find(params[:id])
     @post = Post.new
     @posts = Post.all.order(created_at: :desc)

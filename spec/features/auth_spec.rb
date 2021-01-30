@@ -14,7 +14,7 @@ RSpec.feature 'Authentications', type: :feature do
   end
   it 'Should NOT Signup' do
     visit signup_path
-    fill_in 'user[fullname]', with: 'new_user'
+    fill_in 'user[fullname]', with: 'new-user'
     fill_in 'user[username]', with: 'newuser1'
     click_button 'Join the cathood 😽'
     expect(page).to have_text('error prohibited this user from being saved')

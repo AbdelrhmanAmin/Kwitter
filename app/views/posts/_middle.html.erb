@@ -1,13 +1,13 @@
   <%= tweet_posts(@post)%>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@posts.count) %> TWEETS</a>
+    <a class='h6'> <%= (@posts.length) %> TWEETS</a>
   </div>
 <%= posts(@posts, current_user)%>
 </div>
 <div class=" bg-white p-3 m-5">
   <div class='border border-top-0 border-left-0 border-right-0 pb-3'>
-    <a class='h6'> <%= (@coming_events.count) %> EVENTS</a>
+    <a class='h6'> <%= (@coming_events.length) %> EVENTS</a>
     </div>
 <%= events(@coming_events, current_user)%>
 </div>
