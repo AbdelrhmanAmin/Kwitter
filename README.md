@@ -46,7 +46,7 @@
 
 ## Live Demo
 
-[Heroku App Link](https://mysterious-citadel-12763.herokuapp.com/)
+[Heroku App Link](https://fierce-depths-10676.herokuapp.com/)
 
 ## Prerequisites
 
