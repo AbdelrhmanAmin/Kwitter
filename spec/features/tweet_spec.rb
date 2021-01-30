@@ -7,7 +7,7 @@ RSpec.feature 'Posts', type: :feature do
     Post.create(user_id: @user1.id, content: 'my first post')
   end
 
-  it 'Should create an opinion' do
+  it 'Should create a post' do
     visit root_path
     visit login_path
     fill_in 'username', with: 'Ali_Zien'
@@ -16,4 +16,9 @@ RSpec.feature 'Posts', type: :feature do
     click_button 'TWEET'
     expect(page).to have_content('This is a tweet')
   end
+  it 'Should NOT BE ABLE TO create a post' do
+    visit root_path
+    expect(page).to_not have_content('post[content]')
+  end
+  
 end

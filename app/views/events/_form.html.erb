@@ -1,17 +1,18 @@
-<%= form_with(model: event) do |form| %>
-    <%= form.label :title %>
+<%= form_with(model: event, local: true) do |form| %>
+    <%= error_msg2(event) %>
+    <strong class="text-warning">Title:</strong>
     <div class="form-group">
       <%= form.text_field :title, value: event.title %> <br>
     </div>
-    <%= form.label :cover %>
+    <strong class="text-warning">Choose a cover image:</strong>
     <div class="form-group">
       <%= form.file_field :cover %> <br>
     </div>
-    <%= form.label :date %>
+    <strong class="text-warning">Pick the event date:</strong>
     <div class="form-group">
       <%= form.date_field :date, min: Date.today %> <br>
     </div>
-    <%= form.label :content %>
+    <strong class="text-warning">Describe the event:</strong>
     <div class="form-group">
       <%= form.text_area(:content, size: '50x10', :input_html => {:minlength => 10} ) %>
     </div>

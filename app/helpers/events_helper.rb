@@ -31,7 +31,7 @@ module EventsHelper
     end
   end
 
-  def error_msg(event)
+  def error_msg2(event)
     out = ''
     if event.errors.any?
       out << "<div id='error_explanation'>
@@ -39,14 +39,14 @@ module EventsHelper
         #{pluralize(event.errors.count, 'error')} prohibited this event from being saved:
         </h2>
         <ul>
-          #{err_msg(event)}
+          #{err_msg2(event)}
         </ul>
       </div>"
     end
     out.html_safe
   end
 
-  def err_msg(event)
+  def err_msg2(event)
     out = ''
     event.errors.full_messages.each do |message|
       out << "<li>#{message}</li>"

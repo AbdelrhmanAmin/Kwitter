@@ -1,18 +1,16 @@
 # rubocop:disable Style/GuardClause
 
 class User < ApplicationRecord
-  validates :username, presence: true, length: { in: 3..12 }, format: { without: /\s/ }
-  validates :fullname, presence: true, format: { with: /\A[a-zA-Z ]+\z/ }
-  validates :username, uniqueness: true
-  validates :fullname, uniqueness: true
+   validates :username, presence: true, length: { in: 3..12 }, format: { without: /\s/ }, uniqueness: true 
+  validates :fullname, presence: true, length: {in: 3..25} ,format: { with: /\A[a-zA-Z ]+\z/ }, uniqueness: true
   has_one_attached :image
   has_one_attached :cover
   validate :image_type
   has_many :posts, dependent: :destroy
   has_many :events, foreign_key: :creator_id
 
-  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :active_relationships, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
+  has_many :passive_relationships, class_name: 'Following', foreign_key: 'followed_id', dependent: :destroy
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower

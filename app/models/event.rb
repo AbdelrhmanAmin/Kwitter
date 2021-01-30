@@ -1,7 +1,6 @@
 # rubocop:disable Style/GuardClause
 
 class Event < ApplicationRecord
-  after_save :auto_populate_creator
   validates :title, presence: true, uniqueness: true
   validates :date, presence: true
   validates :content, presence: true
@@ -10,6 +9,7 @@ class Event < ApplicationRecord
   has_many :attendances, through: :attendees, source: :attendee
   has_one_attached :cover
   validate :image_type
+  after_save :auto_populate_creator
   def auto_populate_creator
     attendances << creator if attendances.empty?
   end

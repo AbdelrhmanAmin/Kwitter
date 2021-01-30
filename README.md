@@ -50,7 +50,7 @@
 
 ## Prerequisites
 
-- Ruby: 2.6.5
+- Ruby: 2.5.7
 - Rails: 6.0.3
 - Postgres: >=9.5
 - Git
@@ -59,6 +59,18 @@
 
 - Fork/Clone this project to your local machine
 - Open folder in your local enviroment and run these lines of code to get started:
+
+Open terminal and paste this line
+
+```
+   git clone https://github.com/AbdelrhmanAmin/Kwitter.git
+```
+
+go to the folder by writing this line
+
+```
+    cd Kwitter
+```
 
 Install gems with:
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions
-  resources :relationships
+  resources :followings
   get '/users', to: 'users#new'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

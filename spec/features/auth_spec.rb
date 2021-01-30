@@ -5,12 +5,28 @@ RSpec.feature 'Authentications', type: :feature do
     @user = User.create!(fullname: 'user', username: 'user1')
   end
 
-  it 'Should Signup' do
+  it 'Should NOT Signup' do
+    visit signup_path
+    fill_in 'user[fullname]', with: 'new_user1'
+    fill_in 'user[username]', with: 'newuser1'
+    click_button 'Join the cathood 😽'
+    expect(page).to have_text('error prohibited this user from being saved')
+  end
+  it 'Should NOT Signup' do
     visit signup_path
     fill_in 'user[fullname]', with: 'new_user'
     fill_in 'user[username]', with: 'newuser1'
     click_button 'Join the cathood 😽'
-    expect(page).to have_text('prohibited this user from being saved')
+    expect(page).to have_text('error prohibited this user from being saved')
+  end
+  
+  it 'Should Signup' do
+    visit signup_path
+    fill_in 'user[fullname]', with: 'user'
+    fill_in 'user[username]', with: 'user1'
+    click_button 'Join the cathood 😽'
+    expect(page).to_not have_text('error prohibited this user from being saved')
+    expect(page).to have_content(@user.fullname)
   end
 
   it 'Should Login' do
