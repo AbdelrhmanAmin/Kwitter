@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/ModuleLength
 
 module UsersHelper
-    def error_msg(user)
+  def error_msg(user)
     out = ''
     if user.errors.any?
       out << "<div id='error_explanation'>

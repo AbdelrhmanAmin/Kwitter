@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.feature 'Authentications', type: :feature do
@@ -19,7 +20,7 @@ RSpec.feature 'Authentications', type: :feature do
     click_button 'Join the cathood 😽'
     expect(page).to have_text('error prohibited this user from being saved')
   end
-  
+
   it 'Should Signup' do
     visit signup_path
     fill_in 'user[fullname]', with: 'user'
@@ -48,3 +49,4 @@ RSpec.feature 'Authentications', type: :feature do
     expect(page).to have_content('Login')
   end
 end
+# rubocop:enable Metrics/BlockLength

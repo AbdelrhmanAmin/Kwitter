@@ -4,8 +4,8 @@ RSpec.feature 'Events', type: :feature do
   before :each do
     @user1 = User.create!(fullname: 'Ali Zien', username: 'Ali_Zien')
     @user2 = User.create!(fullname: 'Abdo Amin', username: 'Abdo_Amin')
-    @event = Event.new( title: "Let's meditate", date: Date.today,
-                          content: 'I love to meditate a lot!!!')
+    @event = Event.new(title: "Let's meditate", date: Date.today,
+                       content: 'I love to meditate a lot!!!')
   end
 
   it 'Should create a post' do
@@ -27,5 +27,4 @@ RSpec.feature 'Events', type: :feature do
     @event.save
     expect(@event).to_not eql(true)
   end
-  
 end

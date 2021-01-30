@@ -1,8 +1,8 @@
 # rubocop:disable Style/GuardClause
 
 class User < ApplicationRecord
-   validates :username, presence: true, length: { in: 3..12 }, format: { without: /\s/ }, uniqueness: true 
-  validates :fullname, presence: true, length: {in: 3..25} ,format: { with: /\A[a-zA-Z ]+\z/ }, uniqueness: true
+  validates :username, presence: true, length: { in: 3..12 }, format: { without: /\s/ }, uniqueness: true
+  validates :fullname, presence: true, length: { in: 3..25 }, format: { with: /\A[a-zA-Z ]+\z/ }, uniqueness: true
   has_one_attached :image
   has_one_attached :cover
   validate :image_type

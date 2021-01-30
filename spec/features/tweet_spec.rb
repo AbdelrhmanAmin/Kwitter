@@ -20,5 +20,4 @@ RSpec.feature 'Posts', type: :feature do
     visit root_path
     expect(page).to_not have_content('post[content]')
   end
-  
 end
