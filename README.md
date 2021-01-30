@@ -42,7 +42,7 @@
 
 ## Video
 
-[![Watch the video](./thumbnail.png)](https://www.loom.com/share/62ccab7024a84e2591e88c6905a6860a)
+[![Watch the video](./thumbnail.png)](https://www.loom.com/share/b2b6a6643cdd495e9330d2368820b045)
 
 ## Live Demo
 
