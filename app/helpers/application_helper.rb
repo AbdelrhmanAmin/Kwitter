@@ -9,16 +9,20 @@ module ApplicationHelper
            ).to_s
     out.html_safe
   end
+
   def profile_replacer(user)
     out = ''
     out << (if user.image.attached?
-              image_tag user.profile_picture(user), style: "width: 90px; height: 90px; display:block; border-radius: 50%"
+              image_tag user.profile_picture(user),
+                        style: 'width: 90px; height: 90px; display:block; border-radius: 50%'
             else
-              image_tag 'https://placekitten.com/200/139', style: "width: 90px; height: 90px; display:block; border-radius: 50%"
+              image_tag 'https://placekitten.com/200/139',
+                        style: 'width: 90px; height: 90px; display:block; border-radius: 50%'
             end
            ).to_s
     out.html_safe
   end
+
   def cover_replacer(user)
     out = ''
     out << (if user.cover.attached?
