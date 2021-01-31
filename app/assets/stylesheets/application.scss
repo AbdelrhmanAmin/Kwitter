@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import "font-awesome";
+
+body,
+html {
+  height: 100%;
+  background-color: #f0f0f0;
+}
+
+.grid-left {
+  background-color: rgb(33, 51, 70);
+}
+
+.links-color {
+  color: #34536f;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.ml-3 {
+  margin-left: 0.5rem !important;
+}
+
+.mr-3 {
+  margin-right: 0.5rem !important;
+}
+
+.mr-5 {
+  margin-right: 1.5rem !important;
+}
+
+.bg-select {
+  background-color: #4a98d2;
+}
+
+.followers-num {
+  color: #8b99a4;
+}
+
+.followers {
+  color: #34536f;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.who {
+  color: #969696;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.border-right-0 {
+  border-right: 0 !important;
+}
+
+.border-left-0 {
+  border-left: 0 !important;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
+.border-bottom-0 {
+  border-bottom: 0 !important;
+}
+
+.header-links {
+  color: #36709c;
+  text-decoration: none;
+}
+
+.header-bg {
+  background-color: #51a5e6;
+}
+
+a {
+  transition: all 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+  text-decoration: none;
+}
+
+.social li a i {
+  margin-right: 5px;
+  font-size: 25px;
+  -webkit-transition: 0.5s all ease;
+  -moz-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+
+.social li:hover a i {
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.med {
+  z-index: 1;
+  position: relative;
+}
+
+.foot {
+  z-index: 100;
+  position: relative;
+}

@@ -1,0 +1,8 @@
+<%= dashboard_posts(current_user) %>
+<div class="d-flex justify-content-start flex-column links-color w-100">
+  <div class="d-flex  w-100  w-100 py-3 px-3 align-items-center">
+    🏠
+    <%= link_to 'Home', root_path, class: 'w-100 h6 links-color ml-3' %>
+  </div>
+  <%=links_events(current_user)%>
+</div>
