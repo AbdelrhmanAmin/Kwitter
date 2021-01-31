@@ -1,7 +1,8 @@
 
   
   <div class="d-flex border border-right-0 border-left-0 border-top-0 py-4 flex-column align-items-center">
-    <%= image_tag 'https://placekitten.com/200/139', style: "width: 90px; height: 90px; display:block; border-radius: 50%" %>
+    
+    <%= profile_replacer(@user)%>
     <h6 class='h6 mt-2'><%= @user.fullname%></h6>
     <%= profile(@user, current_user)%>
   </div>

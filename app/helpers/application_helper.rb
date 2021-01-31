@@ -9,13 +9,22 @@ module ApplicationHelper
            ).to_s
     out.html_safe
   end
-
-  def cover_replacer(user)
+  def profile_replacer(user)
     out = ''
     out << (if user.image.attached?
-              image_tag user.profile_picture(user)
+              image_tag user.profile_picture(user), style: "width: 90px; height: 90px; display:block; border-radius: 50%"
             else
-              image_tag('https://placekitten.com/850/300', style: 'width: 850px; height:250px')
+              image_tag 'https://placekitten.com/200/139', style: "width: 90px; height: 90px; display:block; border-radius: 50%"
+            end
+           ).to_s
+    out.html_safe
+  end
+  def cover_replacer(user)
+    out = ''
+    out << (if user.cover.attached?
+              image_tag user.thumbnail(user)
+            else
+              image_tag('https://placekitten.com/850/300', style: 'width: 100%; height:250px')
             end
            ).to_s
     out.html_safe
@@ -24,7 +33,7 @@ module ApplicationHelper
   def event_replacer(event)
     out = ''
     out << (if event.cover.attached?
-              image_tag event.profile_picture(event)
+              image_tag event.cover_event(event)
             else
               image_tag('https://placekitten.com/250/300', style: 'width: 100%; height:250px;')
             end
