@@ -27,7 +27,7 @@
 
 ## Built With
 
-- Ruby v2.6.5
+- Ruby v2.5.7
 - Ruby on Rails v6.0.3
 - bootstrap gem
 - fontawesome gem
